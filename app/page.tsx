@@ -136,6 +136,7 @@
 
 
 import Navbar from '@/components/Navbar';
+import HeroBanner from '@/components/HeroBanner';
 import { MapPin, Clock, Heart } from 'lucide-react';
 
 export default function Home() {
@@ -143,28 +144,8 @@ export default function Home() {
     <main className="min-h-screen bg-gray-50 pt-20">
       <Navbar />
 
-      {/* 1. Hero Banner Section */}
-      <section className="relative h-[500px] flex items-center justify-center text-center text-white">
-        {/* Background Image Overlay */}
-        <div
-          className="absolute inset-0 bg-cover bg-center z-0"
-          style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1438232992991-995b7058bbb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2073&q=80")' }}
-        >
-          <div className="absolute inset-0 bg-black/50"></div>
-        </div>
-
-        <div className="relative z-10 px-4 max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 drop-shadow-lg">
-            Welcome to Grace Church
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 text-gray-100 font-light">
-            A place of love, hope, and new beginnings.
-          </p>
-          <a href="/service" className="bg-white text-gray-900 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition">
-            Join Us This Sunday
-          </a>
-        </div>
-      </section>
+      {/* 1. Hero Banner Section - Auto-sliding carousel */}
+      <HeroBanner />
 
       {/* 2. Introduction Section */}
       <section className="py-20 px-4 bg-white">
