@@ -1,0 +1,252 @@
+// import Image from "next/image";
+
+// export default function Home() {
+//   return (
+//     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
+//       <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+//         <Image
+//           className="dark:invert"
+//           src="/next.svg"
+//           alt="Next.js logo"
+//           width={100}
+//           height={20}
+//           priority
+//         />
+//         <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
+//           <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
+//             To get started, edit the page.tsx file.
+//           </h1>
+//           <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
+//             Looking for a starting point or more instructions? Head over to{" "}
+//             <a
+//               href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+//               className="font-medium text-zinc-950 dark:text-zinc-50"
+//             >
+//               Templates
+//             </a>{" "}
+//             or the{" "}
+//             <a
+//               href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+//               className="font-medium text-zinc-950 dark:text-zinc-50"
+//             >
+//               Learning
+//             </a>{" "}
+//             center.
+//           </p>
+//         </div>
+//         <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
+//           <a
+//             className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
+//             href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+//             target="_blank"
+//             rel="noopener noreferrer"
+//           >
+//             <Image
+//               className="dark:invert"
+//               src="/vercel.svg"
+//               alt="Vercel logomark"
+//               width={16}
+//               height={16}
+//             />
+//             Deploy Now
+//           </a>
+//           <a
+//             className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
+//             href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+//             target="_blank"
+//             rel="noopener noreferrer"
+//           >
+//             Documentation
+//           </a>
+//         </div>
+//       </main>
+//     </div>
+//   );
+// }
+
+
+// 'use client';
+
+// import { useEffect, useState } from 'react';
+// import { db } from '../lib/firebase';
+// import { collection, query, orderBy, getDocs } from 'firebase/firestore';
+// import { Calendar } from 'lucide-react'; // Icon
+
+// // Define what a Notice looks like
+// interface Notice {
+//   id: string;
+//   title: string;
+//   content: string;
+//   createdAt: any;
+// }
+
+// export default function Home() {
+//   const [notices, setNotices] = useState<Notice[]>([]);
+
+//   useEffect(() => {
+//     const fetchNotices = async () => {
+//       // Get reference to "notices" collection
+//       const q = query(collection(db, "notices"), orderBy("createdAt", "desc"));
+
+//       const querySnapshot = await getDocs(q);
+//       const noticesData = querySnapshot.docs.map(doc => ({
+//         id: doc.id,
+//         ...doc.data()
+//       })) as Notice[];
+
+//       setNotices(noticesData);
+//     };
+
+//     fetchNotices();
+//   }, []);
+
+//   return (
+//     <main className="min-h-screen bg-gray-50 p-8">
+//       <div className="max-w-4xl mx-auto">
+//         <header className="mb-8 text-center">
+//           <h1 className="text-4xl font-bold text-gray-900">Church Notices</h1>
+//           <p className="text-gray-600 mt-2">Latest updates and announcements</p>
+//         </header>
+
+//         <div className="grid gap-6">
+//           {notices.map((notice) => (
+//             <div key={notice.id} className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+//               <div className="flex items-center gap-2 mb-2">
+//                 <Calendar className="w-4 h-4 text-blue-500" />
+//                 <span className="text-xs text-gray-400 uppercase tracking-wider">
+//                   {/* Convert Firebase timestamp to readable date */}
+//                   {notice.createdAt?.seconds
+//                     ? new Date(notice.createdAt.seconds * 1000).toLocaleDateString()
+//                     : 'Just now'}
+//                 </span>
+//               </div>
+//               <h2 className="text-xl font-bold text-gray-800 mb-2">{notice.title}</h2>
+//               <p className="text-gray-600 leading-relaxed whitespace-pre-wrap">{notice.content}</p>
+//             </div>
+//           ))}
+
+//           {notices.length === 0 && (
+//             <p className="text-center text-gray-500">Loading notices...</p>
+//           )}
+//         </div>
+//       </div>
+//     </main>
+//   );
+// }
+
+
+import Navbar from '@/components/Navbar';
+import { MapPin, Clock, Heart } from 'lucide-react';
+
+export default function Home() {
+  return (
+    <main className="min-h-screen bg-gray-50 pt-20">
+      <Navbar />
+
+      {/* 1. Hero Banner Section */}
+      <section className="relative h-[500px] flex items-center justify-center text-center text-white">
+        {/* Background Image Overlay */}
+        <div
+          className="absolute inset-0 bg-cover bg-center z-0"
+          style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1438232992991-995b7058bbb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2073&q=80")' }}
+        >
+          <div className="absolute inset-0 bg-black/50"></div>
+        </div>
+
+        <div className="relative z-10 px-4 max-w-4xl mx-auto">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 drop-shadow-lg">
+            Welcome to Grace Church
+          </h1>
+          <p className="text-xl md:text-2xl mb-8 text-gray-100 font-light">
+            A place of love, hope, and new beginnings.
+          </p>
+          <a href="/service" className="bg-white text-gray-900 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition">
+            Join Us This Sunday
+          </a>
+        </div>
+      </section>
+
+      {/* 2. Introduction Section */}
+      <section className="py-20 px-4 bg-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl font-bold text-gray-800 mb-6">Who We Are</h2>
+          <p className="text-gray-600 text-lg leading-relaxed mb-10">
+            We are a community-focused church located in the heart of Auckland.
+            Whether you are exploring faith for the first time or have been a believer for years,
+            you are welcome here. Our mission is to love God, love people, and serve our city.
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-8 mt-12">
+            <div className="p-6 bg-gray-50 rounded-xl">
+              <Heart className="w-10 h-10 text-red-500 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-2">Loving Community</h3>
+              <p className="text-gray-500">A family that cares for one another.</p>
+            </div>
+            <div className="p-6 bg-gray-50 rounded-xl">
+              <Clock className="w-10 h-10 text-blue-500 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-2">Modern Service</h3>
+              <p className="text-gray-500">Inspiring worship and relevant teaching.</p>
+            </div>
+            <div className="p-6 bg-gray-50 rounded-xl">
+              <MapPin className="w-10 h-10 text-green-500 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-2">Local Mission</h3>
+              <p className="text-gray-500">Serving our neighbors in practical ways.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Google Map Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Find Us</h2>
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+
+            {/* Contact Info */}
+            <div className="space-y-6">
+              <div className="flex items-start gap-4">
+                <div className="bg-blue-100 p-3 rounded-full">
+                  <MapPin className="w-6 h-6 text-blue-600" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-lg">Location</h4>
+                  <p className="text-gray-600">449 Mount Eden Road, Mount Eden, <br />Auckland, New Zealand</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="bg-blue-100 p-3 rounded-full">
+                  <Clock className="w-6 h-6 text-blue-600" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-lg">Service Time</h4>
+                  <p className="text-gray-600">Sundays at 11:30 AM</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Embedded Map */}
+            <div className="h-[400px] w-full rounded-2xl overflow-hidden shadow-lg border-4 border-white">
+              {/* <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3191.8943675043883!2d174.6304563158655!3d-36.86877097993437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d0d417769668707%3A0x6b24574932064973!2s22%20Edmonton%20Road%2C%20Henderson%2C%20Auckland%200612%2C%20New%20Zealand!5e0!3m2!1sen!2sus!4v1676961234567!5m2!1sen!2sus"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe> */}
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6382.656091442055!2d174.75900667741848!3d-36.882499781393975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d0d4632b82dd291%3A0xf748835c68dd93a9!2sMt%20Eden%20Village%20Centre!5e0!3m2!1sko!2snz!4v1770990091280!5m2!1sko!2snz"
+                width="600"
+                height="450"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
