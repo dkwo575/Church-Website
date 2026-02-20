@@ -1,8 +1,44 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
+import { db } from '@/lib/firebase';
+import { collection, query, orderBy, onSnapshot } from 'firebase/firestore';
+import { ImageIcon } from 'lucide-react';
+
+// Define what our image data looks like
+interface GalleryItem {
+    id: string;
+    title: string;
+    imageUrl: string;
+}
 
 export default function GalleryPage() {
-    // Placeholders - replace src with your real Firebase image URLs later
-    const images = [1, 2, 3, 4, 5, 6];
+    const [images, setImages] = useState<GalleryItem[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        // 1. Point to the 'gallery' drawer in our Firestore database
+        const galleryQuery = query(
+            collection(db, 'gallery'),
+            orderBy('createdAt', 'desc') // Show newest photos first
+        );
+
+        // 2. Listen for any real-time updates (if Admin uploads a new photo, it appears instantly)
+        const unsubscribe = onSnapshot(galleryQuery, (snapshot) => {
+            const fetchedImages = snapshot.docs.map((doc) => ({
+                id: doc.id,
+                title: doc.data().title,
+                imageUrl: doc.data().imageUrl,
+            }));
+
+            setImages(fetchedImages);
+            setLoading(false);
+        });
+
+        // Cleanup listener when leaving the page
+        return () => unsubscribe();
+    }, []);
 
     return (
         <main className="min-h-screen bg-white pt-20">
@@ -10,23 +46,39 @@ export default function GalleryPage() {
             <div className="max-w-6xl mx-auto px-4 py-12">
                 <h1 className="text-4xl font-bold text-gray-900 mb-8">Church Gallery</h1>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {images.map((item) => (
-                        <div key={item} className="aspect-square bg-gray-200 rounded-lg overflow-hidden relative group">
-                            {/* Placeholder Image */}
-                            <img
-                                // src={`https://source.unsplash.com/random/800x800?church,people&sig=${item}`}
-                                src="church-website/app/image/church3.jpg"
-                                alt="Church Event"
-                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                            />
-                            {/* Hover Overlay */}
-                            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                                <p className="text-white font-medium">Sunday Service Event</p>
+                {loading ? (
+                    // Loading spinner while fetching from Firebase
+                    <div className="flex justify-center items-center h-64">
+                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+                    </div>
+                ) : images.length === 0 ? (
+                    // Message if no images are uploaded yet
+                    <div className="text-center py-20 bg-gray-50 rounded-2xl border border-gray-100">
+                        <ImageIcon className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+                        <h2 className="text-xl font-semibold text-gray-600">No photos yet</h2>
+                        <p className="text-gray-400 mt-2">Check back soon for updates from our events!</p>
+                    </div>
+                ) : (
+                    // The Image Grid
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {images.map((item) => (
+                            <div key={item.id} className="aspect-square bg-gray-100 rounded-lg overflow-hidden relative group shadow-sm border border-gray-200">
+                                {/* The Real Image from Firebase Storage */}
+                                <img
+                                    src={item.imageUrl}
+                                    alt={item.title}
+                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                />
+                                {/* Hover Overlay showing the Title */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                                    <p className="text-white font-medium text-lg drop-shadow-md">
+                                        {item.title}
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                    ))}
-                </div>
+                        ))}
+                    </div>
+                )}
             </div>
         </main>
     );
