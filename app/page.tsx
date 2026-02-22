@@ -137,6 +137,7 @@
 
 import Navbar from '@/components/Navbar';
 import HeroBanner from '@/components/HeroBanner';
+import ScrollReveal from '@/components/ScrollReveal';
 import { MapPin, Clock, Heart } from 'lucide-react';
 
 export default function Home() {
@@ -150,29 +151,44 @@ export default function Home() {
       {/* 2. Introduction Section */}
       <section className="py-20 px-4 bg-white">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-gray-800 mb-6">Who We Are</h2>
-          <p className="text-gray-600 text-lg leading-relaxed mb-10">
-            We are a community-focused church located in the heart of Auckland.
-            Whether you are exploring faith for the first time or have been a believer for years,
-            you are welcome here. Our mission is to love God, love people, and serve our city.
-          </p>
 
+          {/* Heading fades up */}
+          <ScrollReveal animation="fade-up">
+            <h2 className="text-3xl font-bold text-gray-800 mb-6">Who We Are</h2>
+          </ScrollReveal>
+
+          {/* Paragraph fades up with a short delay */}
+          <ScrollReveal animation="fade-up" delay={150}>
+            <p className="text-gray-600 text-lg leading-relaxed mb-10">
+              We are a community-focused church located in the heart of Auckland.
+              Whether you are exploring faith for the first time or have been a believer for years,
+              you are welcome here. Our mission is to love God, love people, and serve our city.
+            </p>
+          </ScrollReveal>
+
+          {/* 3 cards stagger in from different directions */}
           <div className="grid md:grid-cols-3 gap-8 mt-12">
-            <div className="p-6 bg-gray-50 rounded-xl">
-              <Heart className="w-10 h-10 text-red-500 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Loving Community</h3>
-              <p className="text-gray-500">A family that cares for one another.</p>
-            </div>
-            <div className="p-6 bg-gray-50 rounded-xl">
-              <Clock className="w-10 h-10 text-blue-500 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Modern Service</h3>
-              <p className="text-gray-500">Inspiring worship and relevant teaching.</p>
-            </div>
-            <div className="p-6 bg-gray-50 rounded-xl">
-              <MapPin className="w-10 h-10 text-green-500 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Local Mission</h3>
-              <p className="text-gray-500">Serving our neighbors in practical ways.</p>
-            </div>
+            <ScrollReveal animation="fade-left" delay={0}>
+              <div className="p-6 bg-gray-50 rounded-xl h-full">
+                <Heart className="w-10 h-10 text-red-500 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold mb-2">Loving Community</h3>
+                <p className="text-gray-500">A family that cares for one another.</p>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal animation="fade-up" delay={150}>
+              <div className="p-6 bg-gray-50 rounded-xl h-full">
+                <Clock className="w-10 h-10 text-blue-500 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold mb-2">Modern Service</h3>
+                <p className="text-gray-500">Inspiring worship and relevant teaching.</p>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal animation="fade-right" delay={300}>
+              <div className="p-6 bg-gray-50 rounded-xl h-full">
+                <MapPin className="w-10 h-10 text-green-500 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold mb-2">Local Mission</h3>
+                <p className="text-gray-500">Serving our neighbors in practical ways.</p>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -180,51 +196,48 @@ export default function Home() {
       {/* 3. Google Map Section */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Find Us</h2>
+          <ScrollReveal animation="fade-up">
+            <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Find Us</h2>
+          </ScrollReveal>
           <div className="grid md:grid-cols-2 gap-8 items-center">
 
-            {/* Contact Info */}
-            <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <div className="bg-blue-100 p-3 rounded-full">
-                  <MapPin className="w-6 h-6 text-blue-600" />
+            {/* Contact Info slides in from the left */}
+            <ScrollReveal animation="fade-left" delay={100}>
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="bg-blue-100 p-3 rounded-full">
+                    <MapPin className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-lg">Location</h4>
+                    <p className="text-gray-600">449 Mount Eden Road, Mount Eden, <br />Auckland, New Zealand</p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-semibold text-lg">Location</h4>
-                  <p className="text-gray-600">449 Mount Eden Road, Mount Eden, <br />Auckland, New Zealand</p>
+
+                <div className="flex items-start gap-4">
+                  <div className="bg-blue-100 p-3 rounded-full">
+                    <Clock className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-lg">Service Time</h4>
+                    <p className="text-gray-600">Sundays at 11:30 AM</p>
+                  </div>
                 </div>
               </div>
+            </ScrollReveal>
 
-              <div className="flex items-start gap-4">
-                <div className="bg-blue-100 p-3 rounded-full">
-                  <Clock className="w-6 h-6 text-blue-600" />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-lg">Service Time</h4>
-                  <p className="text-gray-600">Sundays at 11:30 AM</p>
-                </div>
+            {/* Map slides in from the right */}
+            <ScrollReveal animation="fade-right" delay={200}>
+              <div className="h-[400px] w-full rounded-2xl overflow-hidden shadow-lg border-4 border-white">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6382.656091442055!2d174.75900667741848!3d-36.882499781393975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d0d4632b82dd291%3A0xf748835c68dd93a9!2sMt%20Eden%20Village%20Centre!5e0!3m2!1sko!2snz!4v1770990091280!5m2!1sko!2snz"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"></iframe>
               </div>
-            </div>
-
-            {/* Embedded Map */}
-            <div className="h-[400px] w-full rounded-2xl overflow-hidden shadow-lg border-4 border-white">
-              {/* <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3191.8943675043883!2d174.6304563158655!3d-36.86877097993437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d0d417769668707%3A0x6b24574932064973!2s22%20Edmonton%20Road%2C%20Henderson%2C%20Auckland%200612%2C%20New%20Zealand!5e0!3m2!1sen!2sus!4v1676961234567!5m2!1sen!2sus"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen={true}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe> */}
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6382.656091442055!2d174.75900667741848!3d-36.882499781393975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d0d4632b82dd291%3A0xf748835c68dd93a9!2sMt%20Eden%20Village%20Centre!5e0!3m2!1sko!2snz!4v1770990091280!5m2!1sko!2snz"
-                width="600"
-                height="450"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"></iframe>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
