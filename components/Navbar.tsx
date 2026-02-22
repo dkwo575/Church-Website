@@ -10,8 +10,8 @@ export default function Navbar() {
     const navItems = [
         { name: 'Home', href: '/' },
         { name: 'Service Times', href: '/service' },
-        { name: 'Announcements', href: '/Announcements' },
-        { name: 'Sermons', href: '/Sermons' },
+        { name: 'Announcements', href: '/announcements' },
+        { name: 'Sermons', href: '/sermons' },
         { name: 'Gallery', href: '/gallery' },
         { name: 'Weekly Word', href: '/verses' }, // The Bible Verse Notice Board
 
