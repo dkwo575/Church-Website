@@ -84,7 +84,8 @@ import { auth } from '@/lib/firebase';
 import { signOut } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { LayoutDashboard, Image as ImageIcon, Megaphone, Video, LogOut } from 'lucide-react';
+import { LayoutDashboard, Image as ImageIcon, Megaphone, Video, LogOut, BookOpen } from 'lucide-react';
+import Navbar from '@/components/Navbar';
 
 export default function AdminDashboard() {
   const router = useRouter();
@@ -139,6 +140,15 @@ export default function AdminDashboard() {
               <Video className="w-10 h-10 text-purple-500 mb-4 group-hover:scale-110 transition-transform" />
               <h2 className="text-xl font-bold text-gray-800 mb-2">Sunday Sermons</h2>
               <p className="text-gray-500 text-sm">Add YouTube links and sermon summaries.</p>
+            </div>
+          </Link>
+
+          {/* Add this right under your other Admin links */}
+          <Link href="/admin/verses" className="block group">
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-200 hover:border-green-500 hover:shadow-md transition cursor-pointer h-full">
+              <BookOpen className="w-10 h-10 text-green-500 mb-4 group-hover:scale-110 transition-transform" />
+              <h2 className="text-xl font-bold text-gray-800 mb-2">Weekly Word</h2>
+              <p className="text-gray-500 text-sm">Post a weekly devotional and scripture.</p>
             </div>
           </Link>
 
