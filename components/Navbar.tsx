@@ -27,7 +27,7 @@ export default function Navbar() {
                         <Link href="/" className="flex items-center gap-2">
                             <Church className="h-8 w-8 text-blue-600" />
                             <span className="font-bold text-2xl text-gray-800 tracking-tight">
-                                Mount Eden Korean Church
+                                Mt. Eden Korean Church
                             </span>
                         </Link>
                     </div>
@@ -80,13 +80,23 @@ export default function Navbar() {
                                 {item.name}
                             </Link>
                         ))}
+                        {/* Contact Us — same style as nav links */}
+                        <Link
+                            href="/contact"
+                            onClick={() => setIsOpen(false)}
+                            className="block px-3 py-2 text-base font-medium text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-md"
+                        >
+                            Contact Us
+                        </Link>
+                        {/* Login — same style as nav links */}
+                        <Link
+                            href="/login"
+                            onClick={() => setIsOpen(false)}
+                            className="block px-3 py-2 text-base font-medium text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-md"
+                        >
+                            Login
+                        </Link>
                     </div>
-                    <Link
-                        href="/login"
-                        className="bg-blue-600 text-white px-3 py-1 text-sm rounded-full hover:bg-blue-700 transition"
-                    >
-                        Login
-                    </Link>
                 </div>
             )}
         </nav>
