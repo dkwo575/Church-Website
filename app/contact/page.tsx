@@ -47,8 +47,7 @@ export default function ContactPage() {
                                 <div>
                                     <h3 className="font-semibold text-gray-900">Visit Us</h3>
                                     <p className="text-gray-600">
-                                        22 Edmonton Rd, Henderson<br />
-                                        Auckland, New Zealand
+                                        449 Mount Eden Road, Mount Eden, <br />Auckland, New Zealand
                                     </p>
                                 </div>
                             </div>
@@ -59,7 +58,8 @@ export default function ContactPage() {
                                 </div>
                                 <div>
                                     <h3 className="font-semibold text-gray-900">Call Us</h3>
-                                    <p className="text-gray-600">+64 9-123-4567</p>
+                                    <p className="text-gray-600">Rev. Han    027 514 1121</p>
+                                    <p className="text-gray-600">Rev. Shin   021 126 8180</p>
                                     <p className="text-sm text-gray-400">Mon-Fri, 9am - 5pm</p>
                                 </div>
                             </div>
@@ -70,7 +70,7 @@ export default function ContactPage() {
                                 </div>
                                 <div>
                                     <h3 className="font-semibold text-gray-900">Email Us</h3>
-                                    <p className="text-gray-600">office@gracechurch.co.nz</p>
+                                    <p className="text-gray-600">mtedenkoranchurch@gmail.com</p>
                                 </div>
                             </div>
                         </div>

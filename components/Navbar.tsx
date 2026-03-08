@@ -13,7 +13,7 @@ export default function Navbar() {
         { name: 'Announcements', href: '/announcements' },
         { name: 'Sermons', href: '/sermons' },
         { name: 'Gallery', href: '/gallery' },
-        { name: 'Weekly Word', href: '/verses' }, // The Bible Verse Notice Board
+        // { name: 'Weekly Word', href: '/verses' }, // The Bible Verse Notice Board
 
     ];
 

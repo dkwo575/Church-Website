@@ -7,8 +7,9 @@ const slides = [
     {
         image:
             'https://images.unsplash.com/photo-1438232992991-995b7058bbb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2073&q=80',
-        heading: 'Welcome to Grace Church',
-        subtext: 'A place of love, hope, and new beginnings.',
+        heading: '마운트이든 한인교회',
+        // subtext: 'A place of love, hope, and new beginnings.',
+        subtext : 'Mount Eden Korean Methodist Church of New Zealand.'
     },
     {
         image:

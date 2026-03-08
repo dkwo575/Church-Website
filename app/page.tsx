@@ -160,10 +160,28 @@ export default function Home() {
           {/* Paragraph fades up with a short delay */}
           <ScrollReveal animation="fade-up" delay={150}>
             <p className="text-gray-600 text-lg leading-relaxed mb-10">
-              We are a community-focused church located in the heart of Auckland.
-              Whether you are exploring faith for the first time or have been a believer for years,
-              you are welcome here. Our mission is to love God, love people, and serve our city.
+              마운트이든 한인교회는 뉴질랜드 감리교단 노던시노드 코리안패리쉬 소속 교회입니다.
+
             </p>
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">우리는 이런 공동체입니다</h3>
+            <p className="text-gray-600 text-lg leading-relaxed mb-10">
+              마운트 이든 교회는 말씀 위에 서서 서로를 따뜻하게 안아주는 공동체입니다. 건강한 신앙의 전통을 소중히 여기며, 우리의 일상 속에서 정의와 공의가 실현되는 삶을 함께 추구합니다. 관념이 아닌 실제 삶에 뿌리내린 신앙, 이웃과 지역사회에 축복의 통로가 되는 교회를 꿈꿉니다.
+              뉴질랜드 감리교단 노던시노드의 튼튼한 기반 아래 안정적으로 세워진 교회로서, 바로 알고 바로 믿고 바로 서는 공동체를 향해 오늘도 함께 걸어가고 있습니다.
+
+            </p>
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">이런 분들과 함께하고 싶습니다.</h3>
+            <p className="text-gray-600 text-lg leading-relaxed mb-10">
+          
+이민 생활 속에서 교회에 대한 기대가 조금씩 흔들려온 분들, 아이들이 건강한 신앙 안에서 바르게 자라기를 바라는 부모님들, 그리고 삶과 맞닿아 있는 합리적이고 실용적인 신앙생활을 원하는 청년, 젊은 가정, 그리고 이 땅에서 믿음의 뿌리를 끝까지 지켜오신 분들. 마운트 이든 교회는 바로 그런 분들과 함께하고 싶습니다. <br />
+뉴질랜드 감리교단 노던시노드의 튼튼한 기반 아래 안정적으로 세워진 교회로서, 바로 알고 바로 믿고 바로 서는 공동체를 향해 오늘도 함께 걸어가고 있습니다.
+새로운 시작을 찾고 계신다면, 이곳에서 함께해요.
+            </p>
+
+            {/* <p className="text-gray-600 text-lg leading-relaxed mb-10">
+          
+
+
+            </p> */}
           </ScrollReveal>
 
           {/* 3 cards stagger in from different directions */}
