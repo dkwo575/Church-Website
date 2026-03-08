@@ -1,8 +1,9 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
-import { Menu, X, Church } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -25,9 +26,10 @@ export default function Navbar() {
                     {/* Logo Section */}
                     <div className="flex items-center">
                         <Link href="/" className="flex items-center gap-2">
-                            <Church className="h-8 w-8 text-blue-600" />
+                            <Image src="/logo_high.png" alt="Church Logo" width={256} height={256} className="h-16 w-16 object-contain" />
                             <span className="font-bold text-2xl text-gray-800 tracking-tight">
-                                Mt. Eden Korean Church
+                                마운트 이든 한인 교회
+                                <div className="text-sm text-gray-600">The Methodist Church of New Zealand</div>
                             </span>
                         </Link>
                     </div>
