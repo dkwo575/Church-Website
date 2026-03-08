@@ -10,6 +10,7 @@ import Link from 'next/link';
 
 export default function AdminGalleryUpload() {
   const [title, setTitle] = useState('');
+  const [date, setDate] = useState('');
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -46,6 +47,7 @@ export default function AdminGalleryUpload() {
       // Step E: Save the Title and the URL into the Firestore Database
       await addDoc(collection(db, 'gallery'), {
         title: title,
+        date: date,
         imageUrl: publicImageUrl,
         createdAt: serverTimestamp(),
       });
@@ -54,6 +56,7 @@ export default function AdminGalleryUpload() {
       
       // Clear the form
       setTitle('');
+      setDate('');
       setImageFile(null);
       
       // Reset the file input visually
@@ -93,6 +96,17 @@ export default function AdminGalleryUpload() {
               className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition"
               placeholder="e.g., Easter Sunday 2026"
               required
+            />
+          </div>
+
+          {/* Date Input */}
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">Event Date (Optional)</label>
+            <input
+              type="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition"
             />
           </div>
 

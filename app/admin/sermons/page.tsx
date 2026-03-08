@@ -69,7 +69,7 @@ export default function AdminSermonsUpload() {
             </div>
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">Date</label>
-              <input type="text" value={date} onChange={(e) => setDate(e.target.value)} className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none" placeholder="e.g., Feb 22, 2026" required />
+              <input type="date" value={date} onChange={(e) => setDate(e.target.value)} className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none" required />
             </div>
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">Scripture Passage</label>

@@ -81,11 +81,10 @@ export default function AdminAnnouncementsUpload() {
                         <div>
                             <label className="block text-sm font-semibold text-gray-700 mb-2">Date (Optional)</label>
                             <input
-                                type="text"
+                                type="date"
                                 value={date}
                                 onChange={(e) => setDate(e.target.value)}
                                 className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none transition"
-                                placeholder="e.g., Feb 28, 2026"
                             />
                         </div>
 
