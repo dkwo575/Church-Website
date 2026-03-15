@@ -27,7 +27,7 @@ export default function Navbar() {
                     <div className="flex items-center">
                         <Link href="/" className="flex items-center gap-2">
                             <Image src="/logo_high.png" alt="Church Logo" width={256} height={256} className="h-16 w-16 object-contain" />
-                            <span className="font-bold text-3xl text-gray-800 tracking-tight">
+                            <span className="font-bold text-xl md:text-3xl text-gray-800 tracking-tight">
                                 마운트 이든 한인교회
                                 <div className="text-sm text-gray-600">The Methodist Church of New Zealand</div>
                             </span>
