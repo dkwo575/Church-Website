@@ -105,6 +105,7 @@ interface Announcement {
 export default function AnnouncementsPage() {
   const [announcements, setAnnouncements] = useState<Announcement[]>([]);
   const [loading, setLoading] = useState(true);
+  const [selectedCategory, setSelectedCategory] = useState<string>('All');
   
   // Checks if you (the Admin) are currently logged in
   const [user] = useAuthState(auth); 
@@ -143,6 +144,11 @@ export default function AnnouncementsPage() {
     }
   };
 
+  // Filter announcements based on selected category
+  const filteredAnnouncements = selectedCategory === 'All' 
+    ? announcements 
+    : announcements.filter(item => item.category === selectedCategory);
+
   return (
     <main className="min-h-screen bg-gray-50 pt-20">
       <Navbar />
@@ -157,17 +163,36 @@ export default function AnnouncementsPage() {
           </div>
         </header>
 
+        {/* Category Tabs */}
+        {!loading && (
+          <div className="flex gap-2 mb-8 overflow-x-auto pb-2 scrollbar-hide">
+            {['All', 'Monday Class', 'Sunday Class', 'Mission', 'General News'].map((cat) => (
+               <button
+                 key={cat}
+                 onClick={() => setSelectedCategory(cat)}
+                 className={`px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap transition-colors ${
+                   selectedCategory === cat
+                     ? 'bg-orange-600 text-white shadow-md'
+                     : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'
+                 }`}
+               >
+                 {cat}
+               </button>
+            ))}
+          </div>
+        )}
+
         {loading ? (
           <div className="flex justify-center py-20">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600"></div>
           </div>
-        ) : announcements.length === 0 ? (
+        ) : filteredAnnouncements.length === 0 ? (
           <div className="text-center py-20 bg-white rounded-2xl border border-gray-200">
-            <p className="text-gray-500">No announcements at this time.</p>
+            <p className="text-gray-500">No announcements found in this category.</p>
           </div>
         ) : (
           <div className="space-y-6">
-            {announcements.map((item) => (
+            {filteredAnnouncements.map((item) => (
               <div 
                 key={item.id} 
                 className={`bg-white rounded-xl shadow-sm border p-6 transition relative group ${
@@ -188,9 +213,9 @@ export default function AnnouncementsPage() {
                 <div className="flex justify-between items-start mb-4 pr-10">
                   <div className="flex gap-2 items-center flex-wrap">
                     <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                      item.category === 'Event' ? 'bg-blue-100 text-blue-800' :
-                      item.category === 'Finance' ? 'bg-green-100 text-green-800' :
-                      item.category === 'Community' ? 'bg-purple-100 text-purple-800' :
+                      item.category === 'Monday Class' ? 'bg-blue-100 text-blue-800' :
+                      item.category === 'Sunday Class' ? 'bg-green-100 text-green-800' :
+                      item.category === 'Mission' ? 'bg-purple-100 text-purple-800' :
                       'bg-gray-100 text-gray-800'
                     }`}>
                       {item.category}

@@ -10,7 +10,7 @@ import Link from 'next/link';
 export default function AdminAnnouncementsUpload() {
     const [title, setTitle] = useState('');
     const [date, setDate] = useState('');
-    const [category, setCategory] = useState('Event');
+    const [category, setCategory] = useState('General News');
     const [content, setContent] = useState('');
     const [isPinned, setIsPinned] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -35,7 +35,7 @@ export default function AdminAnnouncementsUpload() {
             // Clear the form for the next entry
             setTitle('');
             setDate('');
-            setCategory('Event');
+            setCategory('General News');
             setContent('');
             setIsPinned(false);
 
@@ -96,10 +96,10 @@ export default function AdminAnnouncementsUpload() {
                                 onChange={(e) => setCategory(e.target.value)}
                                 className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none transition bg-white"
                             >
-                                <option value="Event">Event</option>
-                                <option value="Finance">Finance</option>
-                                <option value="Community">Community</option>
-                                <option value="General">General News</option>
+                                <option value="General News">General News</option>
+                                <option value="Monday Class">Monday Class</option>
+                                <option value="Sunday Class">Sunday Class</option>
+                                <option value="Mission">Mission</option>
                             </select>
                         </div>
                     </div>
