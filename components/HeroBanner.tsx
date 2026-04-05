@@ -2,32 +2,56 @@
 
 import { useEffect, useState, useCallback } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import church3Image from '@/app/image/church3.jpg';
+import church1Image from '@/app/image/church1.jpg';
+import church2Image from '@/app/image/church_4.jpg';
+import church4Image from '@/app/image/church_5.jpg';
+import churchegg from '@/app/image/church_egg.jpg';
+import church5Image from '@/app/image/church_6.jpg';
 
 const slides = [
+    // {
+    //     image:
+    //         'https://images.unsplash.com/photo-1438232992991-995b7058bbb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2073&q=80',
+    //     heading: '마운트이든 한인교회',
+    //     // subtext: 'A place of love, hope, and new beginnings.',
+    //     subtext : 'Mount Eden Korean Methodist Church of New Zealand.'
+    // },
     {
-        image:
-            'https://images.unsplash.com/photo-1438232992991-995b7058bbb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2073&q=80',
+        image: church2Image.src,
         heading: '마운트이든 한인교회',
         // subtext: 'A place of love, hope, and new beginnings.',
         subtext : 'Mount Eden Korean Methodist Church of New Zealand.'
     },
     {
         image:
-            'https://images.unsplash.com/photo-1504052434569-70ad5836ab65?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+            church4Image.src,
         heading: 'Worship Together',
         subtext: 'Join us every Sunday for inspiring praise and worship.',
     },
     {
         image:
-            'https://images.unsplash.com/photo-1529070538774-1843cb3265df?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+           church3Image.src,
         heading: 'Serve Our Community',
         subtext: 'Making a difference in the lives of those around us.',
     },
     {
         image:
-            'https://images.unsplash.com/photo-1543357480-c60d40f9df07?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+            church1Image.src,
         heading: 'Grow in Faith',
         subtext: 'Bible studies, small groups, and discipleship for all ages.',
+    },
+    {
+        image:
+            churchegg.src,
+        heading: 'Easter Sunday',
+        subtext: '부활절 연합예배',
+    },
+    {
+        image:
+            church5Image.src,
+        heading: 'Easter Sunday',
+        subtext: '부활절 연합예배',
     },
 ];
 
