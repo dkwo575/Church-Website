@@ -70,7 +70,7 @@ export default function ContactPage() {
                                 </div>
                                 <div>
                                     <h3 className="font-semibold text-gray-900">Email Us</h3>
-                                    <p className="text-gray-600">mtedenkoranchurch@gmail.com</p>
+                                    <p className="text-gray-600">mtedenkoreanchurch@gmail.com</p>
                                 </div>
                             </div>
                         </div>
